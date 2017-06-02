@@ -1,12 +1,27 @@
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      turnBold: false
+    };
+  }
+
+  onListItemHover() {
+    this.setState({
+      turnBold: !this.state.turnBold
+    });
   }
 
   render() {
+
+    var style = {
+      'font-weight': this.state.turnBold ? 'bold' : 'none'
+    };
     return (
-      <li>{this.props.todos}</li>
-    )
+
+      <li style={style} onMouseOver={this.onListItemHover.bind(this)}>{this.props.todos}</li>
+    );
   }
 }
 
